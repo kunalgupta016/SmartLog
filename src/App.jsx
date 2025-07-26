@@ -4,7 +4,6 @@ import Dashboard from './components/Dashboard';
 import { TransactionProvider } from './components/TransactionContext';
 
 import VisualReports from './components/VisualReports';
-import BudgetGoals from './components/BudgetGoals';
 
 import { Toaster } from 'react-hot-toast';
 import { CurrencyProvider } from "./components/CurrencyContext";
@@ -29,7 +28,6 @@ export default function App() {
             <Route path="/contact" element={<ContactPage />} />
 
               <Route path="/reports" element={<VisualReports/>} />
-              <Route path="/budget-checker" element={<BudgetGoals/>}/>
 
             <Route path="/goals" element={<GoalsPage />} />
 
