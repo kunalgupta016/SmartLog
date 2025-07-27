@@ -6,7 +6,16 @@ import {
 import { useTransactions } from "./TransactionContext";
 import { motion } from "framer-motion";
 
-const COLORS = ["#f43f5e", "#6366f1", "#a855f7", "#14b8a6", "#22c55e", "#f59e0b", "#3b82f6", "#10b981"];
+const COLORS = [
+  "#0BA775", // Soft green
+  "#E53434", // Soft red
+  "#2C68E7", // Blue
+  "#00C48F", // Indigo
+  "#22c55e", // Light green
+  "#f97316", // Orange
+  "#864BFD", // Cyan
+  "#a855f7", // Violet
+];
 
 const VisualReports = () => {
   const { transactions } = useTransactions();
@@ -81,15 +90,18 @@ const VisualReports = () => {
         >
           <h2 className="text-xl font-semibold text-green-500 mb-4">Income by Category</h2>
           <ResponsiveContainer width="100%" height={300}>
-            <BarChart data={incomeData}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="name" />
-              <YAxis />
-              <Tooltip />
-              <Legend />
-              <Bar dataKey="value" fill="#22c55e" />
-            </BarChart>
-          </ResponsiveContainer>
+  <BarChart data={incomeData}>
+    <CartesianGrid strokeDasharray="3 3" />
+    <XAxis dataKey="name" />
+    <YAxis />
+    <Tooltip />
+    <Bar dataKey="value">
+      {incomeData.map((entry, index) => (
+        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+      ))}
+    </Bar>
+  </BarChart>
+</ResponsiveContainer>
         </motion.div>
 
       </div>
